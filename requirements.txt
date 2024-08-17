@@ -1,0 +1,9 @@
+pycocotools
+tqdm
+cython
+scipy
+motmetrics
+wandb
+timm
+bdd100k
+trackeval @ git+https://github.com/nicolamarinello/TrackEval@e36154d642d733fd7621200553e53671c78b0fb7
