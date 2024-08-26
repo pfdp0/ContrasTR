@@ -25,7 +25,6 @@ __Published at WACV 2024. 🏆 State-of-the-art on [BDD100K Tracking dataset](ht
 | Split           | Backbone | Epochs | HOTA | MOTA | IDF1 | IDS  | model     |
 |-----------------|----------|--------|------|------|------|------|-----------|
 | train/val       | ResNet50 | 15     | 63.5 | 73.6 | 76.4 | 331  | link here |
-| train full/test | ResNet50 | 15     | 58.9 | 73.7 | 71.8 | 2619 | link here |
 
 
 To evaluate ContrasTR on the MOT17 validation split, download the "train/val" checkpoint and then run the following command:
