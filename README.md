@@ -1,6 +1,6 @@
-# ContrasTR: Cotrastive Learning for Multi-Object Tracking with Transformers
+# ContrasTR: Contrastive Learning for Multi-Object Tracking with Transformers
 
-Official implementation of the paper [Cotrastive Learning for Multi-Object Tracking with Transformers](https://arxiv.org/abs/2311.08043)
+Official implementation of the paper [Contrastive Learning for Multi-Object Tracking with Transformers](https://arxiv.org/abs/2311.08043)
 
 TL;DR: We show how object detection models can be turned into multi-object tracking models with almost no overhead. We also introduce a pre-training scheme on detection that improves tracking without needing annotated tracking IDs.
 
@@ -22,9 +22,28 @@ __Published at WACV 2024. 🏆 State-of-the-art on [BDD100K Tracking dataset](ht
 
 #### MOT17
 
-| Split           | Backbone | Epochs | HOTA | MOTA | IDF1 | IDS  | model     |
-|-----------------|----------|--------|------|------|------|------|-----------|
-| train/val       | ResNet50 | 15     | 63.5 | 73.6 | 76.4 | 331  | link here |
+<table>
+    <tr>
+        <th>Split</th>
+        <th>Backbone</th>
+        <th>Epochs</th>
+        <th>HOTA</th>
+        <th>MOTA</th>
+        <th>IDF1</th>
+        <th>IDS</th>
+        <th>Download</th>
+    </tr>
+    <tr>
+        <td>train/val</td>
+        <td>ResNet50</td>
+        <td>15</td>
+        <td>63.5</td>
+        <td>73.6</td>
+        <td>76.4</td>
+        <td>331</td>
+        <td><a href="https://drive.google.com/file/d/1nLz2vOwk6Hjt-tgufMSh9yDfCeAjeGMP/view?usp=sharing">Checkpoint</a></td>
+    </tr>
+</table>
 
 
 To evaluate ContrasTR on the MOT17 validation split, download the "train/val" checkpoint and then run the following command:
@@ -36,10 +55,35 @@ python main.py --eval --resume /path/to/mot/checkpoint --dataset_file mot17 --da
 
 #### BDD100K
 
-| Backbone | Epochs | mHOTA | mMOTA | mIDF1 | IDS  | model     |
-|----------|--------|-------|-------|-------|------|-----------|
-| ResNet50 | 10     | 40.8  | 36.7  | 49.2  | 6695 | link here |
-| SwinL    | 10     | 44.4  | 41.7  | 52.9  | 6363 | link here |
+<table>
+    <tr>
+        <th>Backbone</th>
+        <th>Epochs</th>
+        <th>mHOTA</th>
+        <th>mMOTA</th>
+        <th>mIDF1</th>
+        <th>IDS</th>
+        <th>Download</th>
+    </tr>
+    <tr>
+        <td>ResNet50</td>
+        <td>10</td>
+        <td>40.8</td>
+        <td>36.7</td>
+        <td>49.2</td>
+        <td>6695</td>
+        <td><a href="https://drive.google.com/file/d/1Bb1tW2azEdg9lgeV4IIuTLkwFa88eufz/view?usp=sharing">Checkpoint</a></td>
+    </tr>
+    <tr>
+        <td>SwinL</td>
+        <td>10</td>
+        <td>44.4</td>
+        <td>41.7</td>
+        <td>52.9</td>
+        <td>6363</td>
+        <td><a href="https://drive.google.com/file/d/1Cp66z3NR7I1mx6tnugQj9ePZXspsy9_p/view?usp=sharing">Checkpoint</a></td>
+    </tr>
+</table>
 
 To evaluate ContrasTR (with a ResNet50 backbone) on the BDD100K validation split, download the "ResNet50" checkpoint and then run the following command:
 
