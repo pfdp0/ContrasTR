@@ -385,9 +385,10 @@ class ContrasTR(nn.Module):
     def forward(self, samples: NestedTensor,
                 prev_embeddings: Optional[BatchedEmbeddings] = None,
                 current_frames: Optional[Tensor] = None):
-        """The forward expects a NestedTensor, which consists of:
+        """The forward expects a NestedTensor, which is a pair of tensors (images, masks).
                 - samples.tensor: batched images, of shape [batch_size x 3 x H x W]
                 - samples.mask: a binary mask of shape [batch_size x H x W], containing 1 on padded pixels
+            Additionally, it expects the following inputs for association (optional):
                 - prev_embeddings: the embeddings memory from the previous frame
                 - current_frames: the current frame number for each batch element
             ...

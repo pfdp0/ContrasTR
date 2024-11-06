@@ -43,25 +43,14 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
     num_steps = len(data_loader)
     world_size = utils.get_world_size()
 
-    prev_tracking_embeddings = BatchedEmbeddings(args.batch_size, args.num_queries, args.hidden_dim,
-                                                 max_prev_frames=0, # previous embeddings not needed during training
-                                                 objectness_threshold=args.objectness_threshold,
-                                                 mixed_precision=args.mixed_precision)
-    prev_tracking_embeddings.to(device)
-    current_frames = torch.zeros(args.batch_size, dtype=torch.long, device=device)
-
     for loader_idx, (samples, targets, video_ids, reset_flags) in enumerate(metric_logger.log_every(data_loader, args.print_freq, header)):
-        if torch.any(reset_flags):
-            current_frames[reset_flags] = 0  # resets frame numbers to 0 if we start a new video
-            prev_tracking_embeddings.reset_memory_at(reset_flags)
-
         samples = samples.to(device)
 
         targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
 
         optimizer.zero_grad()
         with torch.autocast(device_type=device.type, dtype=torch.float16, enabled=args.mixed_precision):
-            outputs = model(samples, prev_tracking_embeddings, current_frames, skip_tracking_head=True)
+            outputs = model(samples)
             loss_dict = criterion(outputs, targets)
             weight_dict = criterion.weight_dict
             """
